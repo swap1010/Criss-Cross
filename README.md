@@ -6,7 +6,7 @@ To beat the computer (or at least tie), you need to make use of a little bit of 
 
 
 # How to Play
-* Download the game [Criss Cross](https://filebin.net/gqblmrsk34c9zl7q) and Play it. 
+* Download the game [Criss Cross](https://mega.nz/file/74EAzTSB#Pf-3DpziZ_WgKRAljCz9nw9CtomMnyXBA_vfRcYhMAo) and Play it. 
 * You'll play as 'X' against computer 'O'\
 * If you always pay attention and look ahead, you'll never lose a game of Tic-Tac-Toe.<br> You may not win, but at least you'll tie.
 * You have a option to restart the game or exit.
