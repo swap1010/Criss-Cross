@@ -1,5 +1,6 @@
 from tkinter import *
 
+# initializing tkinter
 root = Tk()
 logo = PhotoImage(file="img.png")
 root.overrideredirect(1)
@@ -9,6 +10,7 @@ x = int((ws / 2) - (1350 / 2))
 root.resizable(False, False)
 root.geometry(f"1180x760+{x}+0")
 root.title('Criss Cross')
+# creating mainframe and dividing it in two frame
 Tops = Frame(root, bg="#0a1931", pady=2, width=1180, height=100, relief=RIDGE)
 Tops.grid(row=0, column=0)
 Gametitle = Label(Tops, bg="#0a1931", image=logo, justify=CENTER, cursor="cross")
@@ -28,12 +30,14 @@ cells = []
 button1 = button2 = button3 = button4 = button5 = button6 = button7 = button8 = button9 = Button()
 
 
+# to get the current state of all buttons
 def states():
     return [button1["text"], button2["text"], button3["text"],
             button4["text"], button5["text"], button6["text"],
             button7["text"], button8["text"], button9["text"]]
 
 
+# function to check if player has won or not while optimizing best move
 def result(chance):
     x_o = "".join(chance)
     win = [x_o[:3], x_o[3:6], x_o[6:], x_o[2:8:2], x_o[::4], x_o[::3], x_o[1::3], x_o[2::3]]
@@ -47,6 +51,7 @@ def result(chance):
         return 2
 
 
+# implementing minimax algorithim to create unbeatable AI
 def minimax(current, ismaximizing, grid):
     state = result(grid)
     if state < 2:
@@ -62,6 +67,7 @@ def minimax(current, ismaximizing, grid):
     return bestscore
 
 
+# finding best move
 def ai_play():
     global cells, button1, button2, button3, button4, button5, button6, button7, button8, button9
     cells = states()
@@ -80,12 +86,14 @@ def ai_play():
     checker(btn, False)
 
 
+# enabling all the buttons
 def enable():
     for child in LeftFrame.winfo_children():
         if child['text'] == " ":
             child["state"] = NORMAL
 
 
+# diabling all the buttons when AI is thinking
 def disable():
     for child in LeftFrame.winfo_children():
         child["state"] = DISABLED
@@ -107,6 +115,7 @@ def checker(button, click):
     checkWin()
 
 
+# initilize all game buttons and text
 def play():
     global Gamestate, button1, button2, button3, button4, button5, button6, button7, button8, button9
     button1 = Button(LeftFrame, text=" ", font=("Comic Sans MS", 26, 'bold'), height=3, width=8, bg='#e7e7de',
@@ -143,6 +152,7 @@ def play():
     Gamestate.grid(row=0, column=0)
 
 
+# creating New game and reset game buttons
 new_game = Button(RightFrame2, text="New Game", font=("Comic Sans MS", 23, 'italic'), height=3, width=26, bg='#e7e7de',
                   fg="#0a1931", cursor="exchange", command=play)
 new_game.grid(row=0, column=0, sticky=NSEW)
@@ -151,6 +161,7 @@ close = Button(RightFrame2, text="Exit", height=3, width=26, font=("Comic Sans M
 close.grid(row=1, column=0, sticky=NSEW)
 
 
+# to check any player has won or game has ended and act accordingly
 def checkWin():
     end = False
     state = [button1["text"], button2["text"], button3["text"], button4["text"], button5["text"], button6["text"],
@@ -239,5 +250,6 @@ def checkWin():
     return end
 
 
+# starting the gameplay
 play()
 root.mainloop()
